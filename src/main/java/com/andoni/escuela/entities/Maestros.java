@@ -1,18 +1,23 @@
 package com.andoni.escuela.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
+import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Getter @Setter
-@Table(name = "ALUMNOS")
-public class Alumnos {
+@Getter
+@Setter
+@Table(name = "MAESTROS")
+public class Maestros {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_ALUMNO")
+    @Column(name = "ID_MAESTRO")
     private Long id;
 
     @Column(name = "NOMBRE", length = 50, nullable = false)
@@ -27,10 +32,7 @@ public class Alumnos {
     @Column(name = "EMAIL", length = 100, nullable = false, unique = true)
     private String email;
 
-    @Column(name = "MATRICULA", length = 10, nullable = false, unique = true)
-    private String matricula; //llave foranea
-
-    @Column(name = "FECHA_INGRESO", length = 50, nullable = false)
-    private String fechaIngreso;
-
+    @Pattern(regexp = "^[0-9]{10}$", message = "El teléfono debe tener exactamente 10 dígitos numéricos")
+    @Column(name = "TELEFONO", length = 10, nullable = false, unique = true)
+    private String telefono;
 }
