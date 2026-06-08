@@ -8,10 +8,12 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Builder
 @Getter @Setter
-@Table(name = "INSCRIPCIONES", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"ID_ALUMNO", "ID_GRUPO"})
-})
-public class Inscripciones {
+@Table(name = "INSCRIPCIONES",
+        uniqueConstraints = @UniqueConstraint(
+                name = "INSCRIPCION_ALU_GRU_UK",
+                columnNames = {"ID_ALUMNO","ID_GRUPO"}
+        ))
+public class Inscripcion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,13 +22,16 @@ public class Inscripciones {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_ALUMNO", nullable = false)
-    private Alumnos alumno;
+    private Alumno alumno;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_GRUPO", nullable = false)
-    private Grupos grupo;
+    private Grupo grupo;
 
-    @Column(name = "FECHA_INSCRIPCION", nullable = false)
+    @Column(name = "FECHA_INSCRIPCION")
     private LocalDate fechaInscripcion;
+
+    @OneToOne(mappedBy = "inscripcion")
+    private Calificacion calificacion;
 
 }

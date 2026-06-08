@@ -7,13 +7,16 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @AllArgsConstructor
 @Builder
 @Getter
 @Setter
 @Table(name = "MAESTROS")
-public class Maestros {
+public class Maestro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +35,10 @@ public class Maestros {
     @Column(name = "EMAIL", length = 100, nullable = false, unique = true)
     private String email;
 
-    @Pattern(regexp = "^[0-9]{10}$", message = "El teléfono debe tener exactamente 10 dígitos numéricos")
     @Column(name = "TELEFONO", length = 10, nullable = false, unique = true)
     private String telefono;
+
+    @Builder.Default
+    @OneToMany(mappedBy = "maestro")
+    private List<Grupo> grupos = new ArrayList<>();
 }

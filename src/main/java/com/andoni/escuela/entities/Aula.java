@@ -3,13 +3,16 @@ package com.andoni.escuela.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Getter @Setter
 @Table(name = "AULAS")
-public class Aulas {
+public class Aula {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,4 +24,9 @@ public class Aulas {
 
     @Column(name = "CAPACIDAD", nullable = false)
     private Integer capacidad;
+
+    @Builder.Default
+    @OneToMany(mappedBy = "aula")
+    private List<Grupo> grupos = new ArrayList<>();
+
 }

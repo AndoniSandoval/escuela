@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Builder
 @Getter @Setter
 @Table(name = "CALIFICACIONES")
-public class Calificaciones {
+public class Calificacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,10 +21,8 @@ public class Calificaciones {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_INSCRIPCION", nullable = false, unique = true)
-    private Inscripciones inscripcion;
+    private Inscripcion inscripcion;
 
-    @Min(0)
-    @Max(10)
     @Column(name = "CALIFICACION", nullable = false)
     private Double calificacion;
 

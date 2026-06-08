@@ -4,13 +4,16 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Positive;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Getter @Setter
 @Table(name = "CURSOS")
-public class Cursos {
+public class Curso {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +26,11 @@ public class Cursos {
     @Column(name = "DESCRIPCION", length = 200)
     private String descripcion;
 
-    @Positive
     @Column(name = "CREDITOS", nullable = false)
     private Integer creditos;
+
+    @Builder.Default
+    @OneToMany(mappedBy = "curso")
+    private List<Grupo> grupos = new ArrayList<>();
+
 }

@@ -3,13 +3,17 @@ package com.andoni.escuela.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Getter @Setter
 @Table(name = "ALUMNOS")
-public class Alumnos {
+public class Alumno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_ALUMNO")
@@ -28,9 +32,13 @@ public class Alumnos {
     private String email;
 
     @Column(name = "MATRICULA", length = 10, nullable = false, unique = true)
-    private String matricula; //llave foranea
+    private String matricula;
 
-    @Column(name = "FECHA_INGRESO", length = 50, nullable = false)
-    private String fechaIngreso;
+    @Column(name = "FECHA_INGRESO")
+    private LocalDate fechaIngreso = LocalDate.now();
+
+    @Builder.Default
+    @OneToMany(mappedBy = "alumno")
+    private List<Inscripcion> inscripciones = new ArrayList<>();
 
 }

@@ -8,7 +8,7 @@ import lombok.*;
 @Builder
 @Getter @Setter
 @Table(name = "HORARIOS")
-public class Horarios {
+public class Horario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +17,7 @@ public class Horarios {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_GRUPO", nullable = false)
-    private Grupos grupo;
+    private Grupo grupo;
 
     @Column(name = "DIA", length = 15, nullable = false)
     private String dia;
