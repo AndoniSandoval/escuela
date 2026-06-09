@@ -1,5 +1,6 @@
 package com.andoni.escuela.entities;
 
+import com.andoni.escuela.utils.StringCustomUtils;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
@@ -41,4 +42,26 @@ public class Maestro {
     @Builder.Default
     @OneToMany(mappedBy = "maestro")
     private List<Grupo> grupos = new ArrayList<>();
+
+    public void actualizar(String nombre, String apellidoPaterno,
+                                                   String apellidoMaterno, String email, String telefono){
+        validarDatos(nombre,apellidoPaterno, apellidoMaterno, email, telefono); //falta logica
+    }
+
+    public Maestro(String nombre, String apellidoPaterno, String apellidoMaterno, String email, String telefono) {
+        this.nombre = nombre;
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
+        this.email = email;
+        this.telefono = telefono;
+    }
+
+    public void validarDatos(String nombre, String apellidoPaterno,
+                              String apellidoMaterno, String email, String telefono){
+        StringCustomUtils.validarTamanio(nombre, 4, 50, "EL nombre es requerido y debe contener entre 4 y 50 caracteres");
+        StringCustomUtils.validarTamanio(apellidoPaterno, 4, 50, "EL apellido paterno es requerido y debe contener entre 4 y 50 caracteres");
+        StringCustomUtils.validarTamanio(apellidoMaterno, 4, 50, "EL apellido materno es requerido y debe contener entre 4 y 50 caracteres");
+        StringCustomUtils.validarTamanio(email, 8, 100, "EL email es requerido y debe contener entre 8 y 100 caracteres");
+        StringCustomUtils.validarTamanio(telefono, 10, 10, "EL telefono es requerido y debe contener exactamente 10 caracteres");
+    }
 }

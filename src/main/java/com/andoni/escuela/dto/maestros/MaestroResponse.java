@@ -1,12 +1,14 @@
 package com.andoni.escuela.dto.maestros;
 
+import com.andoni.escuela.dto.datos.DatosCurso;
+
+import java.util.List;
+
 public record MaestroResponse(
         Long id,
         String nombre,
-        String apellidoPaterno,
-        String apellidoMaterno,
         String email,
-        String telefono
-        // List<GrupoResponse> grupos (se agregará después)
+        String telefono,
+        List<DatosCurso> cursos
 ) {
 }

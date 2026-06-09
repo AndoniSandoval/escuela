@@ -1,9 +1,6 @@
 package com.andoni.escuela.dto.cursos;
 
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 public record CursoRequest(
         @NotBlank(message = "El nombre del curso es requerido")
@@ -14,7 +11,8 @@ public record CursoRequest(
         String descripcion,
 
         @NotNull(message = "Los créditos son requeridos")
-        @Min(value = 1, message = "Los créditos deben ser mayor a 0")
+        @Min(value = 1, message = "Los créditos deben ser mayor a 1")
+        @Max(value = 10, message = "Los créditos maximos son 10")
         Integer creditos
 ) {
 }
