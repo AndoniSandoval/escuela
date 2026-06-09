@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.*;
+
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -24,7 +26,7 @@ public class Calificacion {
     private Inscripcion inscripcion;
 
     @Column(name = "CALIFICACION", nullable = false)
-    private Double calificacion;
+    private BigDecimal calificacion;
 
     @Column(name = "FECHA_REGISTRO", nullable = false)
     private LocalDate fechaRegistro;
