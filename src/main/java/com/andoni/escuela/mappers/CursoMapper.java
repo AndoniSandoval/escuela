@@ -12,37 +12,26 @@ import java.util.List;
 
 @AllArgsConstructor
 @Component
-public class CursoMapper implements CommonMapper<CursoRequest, CursoResponse, Curso> {
-
-    private final CursoMapper cursoMapper;
+public class CursoMapper implements CommonMapper<CursoRequest, CursoResponse, Curso>{
 
     @Override
     public Curso requestAEntidad(CursoRequest request) {
-        return null;
+        throw new UnsupportedOperationException("Unimplemented method 'requestAEntidad'");
     }
 
     @Override
     public CursoResponse entidadAResponse(Curso entidad) {
-        return null;
+        throw new UnsupportedOperationException("Unimplemented method 'entidadAResponse'");
     }
 
-    public DatosCurso entidadADatosCurso(Curso entidad) {
-        if (entidad == null) return null;
+    public DatosCurso entidadADatosCurso(Curso curso) {
+        if(curso == null) return null;
 
-        String descripcion = entidad.getDescripcion() == null ?
-                "Sin descripcion" : entidad.getDescripcion();
+        String descripcion = curso.getDescripcion() == null ? "Sin descripcion" : curso.getDescripcion();
 
-        return  new DatosCurso(
-                entidad.getNombre(),
+        return new DatosCurso(
+                curso.getNombre(),
                 descripcion,
-                entidad.getCreditos()
-        );
-    }
-
-    private List<DatosCurso> entidadADatosCurso(Maestro entidad) {
-        if (entidad == null) return List.of();
-
-        return entidad.getGrupos().stream().map(grupo ->
-                cursoMapper.entidadADatosCurso(grupo.getCurso())).toList();
+                curso.getCreditos());
     }
 }

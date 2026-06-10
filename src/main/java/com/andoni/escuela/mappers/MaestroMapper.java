@@ -29,11 +29,11 @@ public class MaestroMapper implements CommonMapper<MaestroRequest, MaestroRespon
     public MaestroResponse entidadAResponse(Maestro entidad){
         if (entidad == null) return null;
 
-        List<DatosCurso> cursos = null;
+        List<DatosCurso> cursos = List.of();
 
         return new MaestroResponse(
                 entidad.getId(),
-                String.join("",
+                String.join(" ",
                         entidad.getNombre(),
                         entidad.getApellidoPaterno(),
                         entidad.getApellidoMaterno()),
