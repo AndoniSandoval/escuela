@@ -1,6 +1,6 @@
 package com.andoni.escuela.dto.aulas;
 
-public record AulasResponse(
+public record AulaResponse(
         Long id,
         String nombre,
         Integer capacidad

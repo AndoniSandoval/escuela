@@ -28,11 +28,16 @@ public class MaestroServiceImpl implements MaestroService {
     @Override
     public List<MaestroResponse> listar() {
         log.info("Listado de todos los maestros solicitado: ");
-        return maestroRepository.findAll().stream().map(maestroMapper::entidadAResponse).toList();
+
+        return maestroRepository.findAll()
+                .stream()
+                .map(maestroMapper::entidadAResponse)
+                .toList();
     }
 
     @Override
     public MaestroResponse obtenerPorId(Long id) {
+
         return maestroMapper.entidadAResponse(obtenerMaestro(id));
     }
 
@@ -52,12 +57,13 @@ public class MaestroServiceImpl implements MaestroService {
     @Override
     public MaestroResponse actualizar(MaestroRequest request, Long id) {
         log.info("Actualizando maestro...");
-
         Maestro maestro = obtenerMaestro(id);
 
         validarCambiosEnDatosUnicos(request, id);
+
         maestro.actualizar(request.nombre(), request.apellidoPaterno(), request.apellidoMaterno(), request.email(), request.telefono());
         log.info("Maestro {} actualizado correctamente ", maestro.getNombre());
+
         return maestroMapper.entidadAResponse(maestro);
     }
 
