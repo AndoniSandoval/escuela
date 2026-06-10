@@ -1,4 +1,4 @@
-package com.andoni.escuela.controllers;
+package com.andoni.escuela.mappers;
 
 public interface CommonMapper <RQ,RS,E>{
 
