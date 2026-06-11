@@ -1,8 +1,8 @@
 package com.andoni.escuela.entities;
 
+import com.andoni.escuela.utils.StringCustomUtils;
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,4 +45,15 @@ public class Grupo {
     @Builder.Default
     @OneToMany(mappedBy = "grupo")
     private List<Inscripcion> inscripciones = new ArrayList<>();
+
+    public void actualizar(String periodo) {
+
+        validarDatos(periodo);
+
+        this.periodo = periodo.trim();
+    }
+
+    public void validarDatos(String periodo) {
+        StringCustomUtils.validarTamanio(periodo, 1, 20, "El periodo es requerido y debe contener entre 1 y 20 caracteres");
+    }
 }

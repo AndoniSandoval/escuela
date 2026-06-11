@@ -45,7 +45,13 @@ public class Maestro {
 
     public void actualizar(String nombre, String apellidoPaterno,
                                                    String apellidoMaterno, String email, String telefono){
-        validarDatos(nombre,apellidoPaterno, apellidoMaterno, email, telefono); //falta logica
+        validarDatos(nombre,apellidoPaterno, apellidoMaterno, email, telefono);
+
+        this.nombre = nombre.trim();
+        this.apellidoPaterno = apellidoPaterno.trim();
+        this.apellidoMaterno = apellidoMaterno.trim();
+        this.email = email.trim();
+        this.telefono = telefono.trim();
     }
 
     public Maestro(String nombre, String apellidoPaterno, String apellidoMaterno, String email, String telefono) {
