@@ -2,12 +2,13 @@ package com.andoni.escuela.services.grupos;
 
 import com.andoni.escuela.dto.grupos.GrupoRequest;
 import com.andoni.escuela.dto.grupos.GrupoResponse;
+import com.andoni.escuela.entities.Aula;
+import com.andoni.escuela.entities.Curso;
 import com.andoni.escuela.entities.Grupo;
+import com.andoni.escuela.entities.Maestro;
 import com.andoni.escuela.exceptions.EntidadRelacionadaException;
 import com.andoni.escuela.mappers.GrupoMapper;
-import com.andoni.escuela.repositories.GrupoRepository;
-import com.andoni.escuela.repositories.HorarioRepository;
-import com.andoni.escuela.repositories.InscripcionRespository;
+import com.andoni.escuela.repositories.*;
 import com.andoni.escuela.utils.ServiceUtils;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -26,6 +27,9 @@ public class GrupoServiceImpl implements GrupoService {
     private final GrupoMapper grupoMapper;
     private final HorarioRepository horarioRepository;
     private final InscripcionRespository inscripcionRepository;
+    private final MaestroRepository maestroRepository;
+    private final AulaRepository aulaRepository;
+    private final CursoRepository cursoRepository;
 
     @Override
     public List<GrupoResponse> listar() {
@@ -48,7 +52,11 @@ public class GrupoServiceImpl implements GrupoService {
 
         validarDatosUnicos(request);
 
-        Grupo grupo = grupoMapper.requestAEntidad(request);
+        Curso curso = ServiceUtils.obtenerEntidadOException(cursoRepository, request.idCurso(), Curso.class);
+        Maestro maestro = ServiceUtils.obtenerEntidadOException(maestroRepository, request.idMaestro(), Maestro.class);
+        Aula aula = ServiceUtils.obtenerEntidadOException(aulaRepository, request.idAula(), Aula.class);
+
+        Grupo grupo = grupoMapper.requestAEntidad(request, curso, maestro, aula);
         grupoRepository.save(grupo);
 
         log.info("Nuevo grupo {} registrado", grupo.getPeriodo());

@@ -6,13 +6,13 @@ import jakarta.validation.constraints.Size;
 
 public record GrupoRequest(
         @NotNull(message = "El curso es requerido")
-        Long cursoId,
+        Long idCurso,
 
         @NotNull(message = "El maestro es requerido")
-        Long maestroId,
+        Long idMaestro,
 
         @NotNull(message = "El aula es requerida")
-        Long aulaId,
+        Long idAula,
 
         @NotBlank(message = "El periodo es requerido")
         @Size(max = 20, message = "El periodo no puede exceder 20 caracteres")

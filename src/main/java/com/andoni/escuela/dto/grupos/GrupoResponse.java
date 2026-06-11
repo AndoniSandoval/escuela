@@ -1,12 +1,17 @@
 package com.andoni.escuela.dto.grupos;
 
+import com.andoni.escuela.dto.datos.DatosAula;
+import com.andoni.escuela.dto.datos.DatosCurso;
+import com.andoni.escuela.dto.datos.DatosMaestro;
+
+import java.util.List;
+
 public record GrupoResponse(
         Long id,
-        Long cursoId,
-        Long maestroId,
-        Long aulaId,
+        DatosCurso curso,
+        DatosMaestro maestro,
+        DatosAula aula,
+        List<String> horarios,
         String periodo
-        // List<HorarioResponse> horarios
-        // List<InscripcionResponse> inscripciones
 ) {
 }
