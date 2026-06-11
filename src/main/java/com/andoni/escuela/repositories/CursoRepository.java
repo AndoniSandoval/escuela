@@ -5,5 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CursoRepository extends JpaRepository<Curso, Long> {
 
-    boolean existsByCursoId(Long grupoId);
+    boolean existsByNombreIgnoreCase(String nombre);
+    boolean existsByNombreIgnoreCaseAndIdNot(String nombre, Long id);
+    boolean existsByGruposId(Long grupoId);
 }

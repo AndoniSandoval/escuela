@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@AllArgsConstructor
 @Component
 public class CursoMapper implements CommonMapper<CursoRequest, CursoResponse, Curso>{
 
