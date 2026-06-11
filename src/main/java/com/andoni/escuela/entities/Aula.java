@@ -33,6 +33,10 @@ public class Aula {
 
     public void actualizar(String nombre, Integer capacidad){
         validarDatos(nombre,capacidad);
+
+        this.nombre = nombre.trim();
+        this.capacidad = capacidad;
+
     }
 
     public Aula(String nombre, Integer capacidad, List<Grupo> grupos) {
