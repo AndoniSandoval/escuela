@@ -10,18 +10,30 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@AllArgsConstructor
 @Component
 public class CursoMapper implements CommonMapper<CursoRequest, CursoResponse, Curso>{
 
     @Override
     public Curso requestAEntidad(CursoRequest request) {
-        throw new UnsupportedOperationException("Unimplemented method 'requestAEntidad'");
+        if (request == null) return null;
+
+        return Curso.builder()
+                .nombre(request.nombre().trim())
+                .descripcion(request.descripcion().trim())
+                .creditos(request.creditos())
+                .build();
     }
 
     @Override
     public CursoResponse entidadAResponse(Curso entidad) {
-        throw new UnsupportedOperationException("Unimplemented method 'entidadAResponse'");
+        if (entidad == null) return null;
+
+        return new CursoResponse(
+                entidad.getId(),
+                entidad.getNombre(),
+                entidad.getDescripcion(),
+                entidad.getCreditos()
+        );
     }
 
     public DatosCurso entidadADatosCurso(Curso curso) {
