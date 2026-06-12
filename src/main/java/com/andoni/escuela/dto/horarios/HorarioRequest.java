@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Size;
 
 public record HorarioRequest(
         @NotNull(message = "El grupo es requerido")
-        Long grupoId,
+        Long idGrupo,
 
         @NotBlank(message = "El día es requerido")
         @Size(max = 15, message = "El día no puede exceder 15 caracteres")

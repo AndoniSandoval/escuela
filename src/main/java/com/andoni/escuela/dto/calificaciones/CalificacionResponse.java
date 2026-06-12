@@ -1,11 +1,13 @@
 package com.andoni.escuela.dto.calificaciones;
 
-import java.time.LocalDate;
+import com.andoni.escuela.dto.datos.DatosInscripcion;
+
+import java.math.BigDecimal;
 
 public record CalificacionResponse(
         Long id,
-        Long inscripcionId,           // Referencia plana por ahora
-        Double calificacion,
-        LocalDate fechaRegistro
+        DatosInscripcion inscripcion,
+        BigDecimal calificacion,
+        String fechaRegistro
 ) {
 }

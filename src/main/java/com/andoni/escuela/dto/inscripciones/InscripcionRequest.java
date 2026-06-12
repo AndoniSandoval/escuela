@@ -6,11 +6,9 @@ import java.time.LocalDate;
 
 public record InscripcionRequest(
         @NotNull(message = "El alumno es requerido")
-        Long alumnoId,
+        Long idAlumno,
 
         @NotNull(message = "El grupo es requerido")
-        Long grupoId,
-
-        LocalDate fechaInscripcion
+        Long idGrupo
 ) {
 }

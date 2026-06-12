@@ -7,6 +7,5 @@ public interface AlumnoRepository extends JpaRepository<Alumno, Long> {
 
     boolean existsByEmailIgnoreCase(String email);
     boolean existsByEmailIgnoreCaseAndIdNot(String email, Long id);
-    boolean existsByMatriculaIgnoreCase(String matricula);
-    boolean existsByMatriculaIgnoreCaseAndIdNot(String matricula, Long id);
+    boolean existsByInscripcionesId(Long inscripcionId);
 }
