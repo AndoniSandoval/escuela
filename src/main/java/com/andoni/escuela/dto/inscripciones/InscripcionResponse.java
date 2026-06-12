@@ -1,12 +1,15 @@
 package com.andoni.escuela.dto.inscripciones;
 
-import java.time.LocalDate;
+import com.andoni.escuela.dto.datos.DatosAlumno;
+import com.andoni.escuela.dto.datos.DatosGrupoHorario;
+
+import java.math.BigDecimal;
 
 public record InscripcionResponse(
         Long id,
-        Long alumnoId,
-        Long grupoId,
-        LocalDate fechaInscripcion
-        // CalificacionResponse calificacion (opcional)
+        DatosAlumno alumno,
+        DatosGrupoHorario grupo,
+        BigDecimal calificacion,      // null si aún no existe
+        String fechaInscripcion
 ) {
 }
