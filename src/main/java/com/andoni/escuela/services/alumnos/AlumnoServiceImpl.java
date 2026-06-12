@@ -63,9 +63,10 @@ public class AlumnoServiceImpl implements AlumnoService {
         alumno.setEmail(email);
 
         alumnoRepository.save(alumno);
-
-        log.info("Nuevo alumno registrado con matrícula {}", alumno.getMatricula());
-        return alumnoMapper.entidadAResponse(alumno);
+        alumnoRepository.flush();
+        Alumno alumnoGuardado = alumnoRepository.findById(alumno.getId()).orElseThrow();
+        log.info("Nuevo alumno registrado con matrícula {}", alumnoGuardado.getMatricula());
+        return alumnoMapper.entidadAResponse(alumnoGuardado);
     }
 
     @Override

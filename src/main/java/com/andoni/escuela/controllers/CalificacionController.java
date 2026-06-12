@@ -3,9 +3,11 @@ package com.andoni.escuela.controllers;
 import com.andoni.escuela.dto.calificaciones.CalificacionRequest;
 import com.andoni.escuela.dto.calificaciones.CalificacionResponse;
 import com.andoni.escuela.services.calificaciones.CalificacionService;
-import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Component
+@RestController
+@RequestMapping("/api/calificaciones")
 public class CalificacionController extends CommonController<CalificacionRequest, CalificacionResponse, CalificacionService>{
 
     public CalificacionController(CalificacionService service) {

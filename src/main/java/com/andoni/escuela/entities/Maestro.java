@@ -3,15 +3,13 @@ package com.andoni.escuela.entities;
 import com.andoni.escuela.utils.StringCustomUtils;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Getter

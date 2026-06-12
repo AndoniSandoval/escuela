@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -46,7 +47,9 @@ public class AlumnoMapper implements CommonMapper<AlumnoRequest, AlumnoResponse,
                         entidad.getApellidoMaterno()),
                 entidad.getEmail(),
                 entidad.getMatricula(),
-                entidad.getFechaIngreso().format(FORMATO_FECHA),
+                entidad.getFechaIngreso()!= null
+                        ? entidad.getFechaIngreso().format(FORMATO_FECHA)
+                        : LocalDate.now().format(FORMATO_FECHA),
                 calificaciones,
                 promedio
         );
