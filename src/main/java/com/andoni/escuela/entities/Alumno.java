@@ -35,6 +35,7 @@ public class Alumno {
     private String matricula;
 
     @Column(name = "FECHA_INGRESO")
+    @org.hibernate.annotations.Generated(event = org.hibernate.generator.EventType.INSERT)
     private LocalDate fechaIngreso = LocalDate.now();
 
     @Builder.Default
