@@ -1,10 +1,10 @@
 package com.andoni.escuela.dto.horarios;
 
+import com.andoni.escuela.dto.datos.DatosGrupoHorario;
+
 public record HorarioResponse(
         Long id,
-        Long grupoId,
-        String dia,
-        String horaInicio,
-        String horaFin
+        DatosGrupoHorario grupo,
+        String horario
 ) {
 }
